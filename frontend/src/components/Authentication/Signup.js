@@ -44,44 +44,44 @@ const Signup = () => {
       return;
     }
     console.log(name, email, password, pic);
-    // try {
-    //   const config = {
-    //     headers: {
-    //       "Content-type": "application/json",
-    //     },
-    //   };
-    //   const { data } = await axios.post(
-    //     "/api/user",
-    //     {
-    //       name,
-    //       email,
-    //       password,
-    //       pic,
-    //     },
-    //     config
-    //   );
-    //   console.log(data);
-    //   toast({
-    //     title: "Registration Successful",
-    //     status: "success",
-    //     duration: 5000,
-    //     isClosable: true,
-    //     position: "bottom",
-    //   });
-    //   localStorage.setItem("userInfo", JSON.stringify(data));
-    //   setPicLoading(false);
-    //   history.push("/chats");
-    // } catch (error) {
-    //   toast({
-    //     title: "Error Occured!",
-    //     description: error.response.data.message,
-    //     status: "error",
-    //     duration: 5000,
-    //     isClosable: true,
-    //     position: "bottom",
-    //   });
-    //   setPicLoading(false);
-    // }
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+        "/api/user",
+        {
+          name,
+          email,
+          password,
+          pic,
+        },
+        config
+      );
+      console.log(data);
+      toast({
+        title: "Registration Successful",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setPicLoading(false);
+      history.push("/chats");
+    } catch (error) {
+      toast({
+        title: "Error Occured!",
+        description: error.response.data.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setPicLoading(false);
+    }
   };
 
   const postDetails = (pics) => {
@@ -100,9 +100,9 @@ const Signup = () => {
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
-      data.append("upload_preset", "chat-app");
-      data.append("cloud_name", "piyushproj");
-      fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+      data.append("upload_preset", "ml_default");
+      data.append("cloud_name", "dmxzp2hmx");
+      fetch("https://api.cloudinary.com/v1_1/dmxzp2hmx/image/upload", {
         method: "post",
         body: data,
       })
