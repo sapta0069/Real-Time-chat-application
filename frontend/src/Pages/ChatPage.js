@@ -5,7 +5,7 @@ function ChatPage(){
 
     return(
         <>
-        hiehjfgweghf
+        chatpage 
         </>
 
     );

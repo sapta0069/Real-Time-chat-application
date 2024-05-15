@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 const generateToken = require("../config/generateToken");
+const bcrypt = require('bcrypt');
 
 
 
@@ -26,7 +27,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (!name || !email || !password) {
     res.status(400);
-    throw new Error("Please Enter all the Feilds");
+    throw new Error("Please Enter all the Fields");
   }
 
   const userExists = await User.findOne({ email });
@@ -36,10 +37,13 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("User already exists");
   }
 
+  // Hash the password before saving the user
+  const hashedPassword = await bcrypt.hash(password, 10);
+
   const user = await User.create({
     name,
     email,
-    password,
+    password: hashedPassword, // Use the hashed password
     pic,
   });
 
@@ -57,6 +61,7 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 });
+
 
 //@description     Auth the user
 //@route           POST /api/users/login
