@@ -13,6 +13,8 @@ app.use(express.json())
 
 
 app.use('/api/user',userRoutes);
+app.use('/api/user',chatRoutes);
+
 app.use(notFound);
 app.use(errorHandler);
 
