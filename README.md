@@ -21,9 +21,9 @@ This repository contains the source code for a real-time chat application develo
 - The application supports integration capabilities with external platforms for enhanced functionality.
 # Usage
 1. Clone the repository.
-2. Install dependencies.
+2. Install dependencies. Use - "npm run build"
 3. configure .env file
-4. npm run build and then npm run start
+4. "npm run start" to start the server and the frontend
 5. Run the application locally or deploy it to a server.
 # Technologies Used
 - HTML
